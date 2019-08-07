@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144357836-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-144357836-1');
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Spencer Braun</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300i,600i&display=swap" rel="stylesheet">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'> -->
+
+    <!-- Custom styles for this template -->
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+
+    <link href="/static/css/clean-blog.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/pygments.css">
+
+</head>
+
+<body>
+
+
+    <!-- Page Header -->
+    <!-- <header class="masthead" style="background-image: url('static/img/home-bg.jpg')"> -->
+    <header>
+        <div class="masthead">
+            <p class="text-center">Spencer Braun</p>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-sm navbar-custom">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item text-center">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item text-center">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+            <li class="nav-item text-center">
+                <a class="nav-link" href="/writing/">Writing</a>
+            </li>
+            <li class="nav-item text-center">
+                <a class="nav-link" href="/projects/">Projects</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- Main Content -->
+    <div class="container content">
+        <div class="row">
+            <div class="col-sm-10 col-lg-11 mx-auto">
+                
+                
+                <div class="page-header">
+                    <h2></h2>
+                </div>
+                
+
+                
+        <h2>Creating a personal site from scratch</h2>
+        <div class="date">2019-08-06</div>
+        <p>Between leaving my job and starting grad school, I had a bit of time on my hands and decided it would be a good time to build a personal website. Many developers have them to display their work, but beyond that I figured it would be a good place to leave some thoughts instead of burying them in Evernote. I wasn't sure how big a project this would be, but tried out a bunch of options and ended up quite happy with Github Pages and a flask static site generator.  </p>
+<p>&nbsp;</p>
+<h6>What Else I Considered</h6>
+<ul>
+<li>
+<p>Jekyll<br />
+Jekyll came up with every Google, and it certainly would have been easier to implement than my solution. However, it runs on Ruby and though I have some experience with it, I was really looking for a Python project. Still, this framework is so appealing I could see moving my site over to it in the future.  </p>
+</li>
+<li>
+<p>Pelican<br />
+Pelican is a static site generator written in Python. With a minor amount of setup, I had a site that could display posts and use pre-made themes. However, I had trouble finding a theme that was relatively simple and not too garish, and I had trouble understanding the Pelican build process under the hood. While this would have worked fine, I wanted to understand every piece of the site, so decided to find another route.</p>
+</li>
+<li>
+<p>Flask<br />
+I have built several sites in Flask and find it simple and intuitive. Sure they weren't static sites, but I didn't mind paying for some simple hosting. I stumbled across this <a href="https://charlesleifer.com/blog/how-to-make-a-flask-blog-in-one-hour-or-less/">post</a> about building a blog in an hour with Flask, and started using that as a base to work off of. Ultimately, I had to ditch almost all of the example code when I decided to go with a static site, plus I was not a fan of the peewee package for SQL management.  </p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h6>My Way</h6>
+<ul>
+<li>
+<p>Github Pages<br />
+After looking around at hosting options, I settled on Github Pages. It is free and relatively straightforward to use - hard to beat that. This meant my site had to be completely static to work with Github (for now at least). Dissatisfied with the static site generators I had already looked into, I wanted a way to use flask and keep the site static.  </p>
+</li>
+<li>
+<p>Frozen Flask  / Flask Flatpages<br />
+Luckily, there is a super easy way to turn a flask site into a static site - Frozen Flask. A few extra lines of code is all it takes to take a working Flask app static. I can also choose to remove this bit of code to make it dynamic again if needed.  </p>
+</li>
+<li>
+<p>Bootstrap<br />
+Twitter's Bootstrap framework is an easy way to structure the CSS and HTML for a site. I was familiar with it from a project ~4 years ago so turned to it again, though with a steep re-learning curve.  </p>
+</li>
+<li>
+<p>Clean Blog Template<br />
+Simple Bootstrap had a number of starting templates to work with. While the site retains very little of the code from the template, it was a good way to refresh my memory of how different tags and styles worked together.</p>
+</li>
+</ul>
+<h6>How It All Works Together</h6>
+<p>What is left is pretty simple - a flask style site that generates static html pages based on certain templates:<br />
+<code>app.py</code> - this is the main heart of the site. It generate the routes to each webpage (about, writing, projects, or any blog post). It also freezes the site when <code>--build</code> is passed as an arg.<br />
+<code>settings.py</code> is called when the app is initiated. It provides some basic setting for how markdown pages are turned into HTML.<br />
+<code>templates/</code> holds all of the jinja2 html templates used to render the site. <code>basestatic.html</code> is the basic layout of the site, and all other pages inherit the general layout from it.<br />
+<code>static/</code> holds everything that doesn't change - images, CSS, JavaScript, etc. While the JavaScript almost entirely came from Bootstrap, I played around a lot with the CSS to get the page to look clean and uncluttered.<br />
+<code>pages/</code> holds all of the markdown pages that are turned into blog posts or other content pages. It holds the original markdown that this page was written in. Pages are sorted based on the tags entered at the top.<br />
+<code>build/</code> - once changes are good to go, I run <code>./app.py --build</code>. This freezes the site contents into the build directory, so all markdown is now html.  </p>
+<p>&nbsp;</p>
+<p>That's about it. While I tried a lot of things to get here, I managed to keep the site simple and customizable. Check out the full code <a href="https://github.com/spencerbraun/personal_flask">here</a> and feel free to contact me with questions.</p>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="https://www.linkedin.com/in/spencerfbraun/">
+                                <span class="fa-stack fa-sm">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://github.com/spencerbraun">
+                                <span class="fa-stack fa-sm">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://twitter.com/spencerfbraun">
+                                <span class="fa-stack fa-sm">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="static/js/clean-blog.js"></script>
+
+</body>
+
+</html>
