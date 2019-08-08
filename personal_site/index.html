@@ -80,42 +80,42 @@
                 
 
                 
-        <h2>Creating a personal site from scratch</h2>
+        <h2>Creating a Personal Site From Scratch</h2>
         <div class="date">2019-08-06</div>
-        <p>Between leaving my job and starting grad school, I had a bit of time on my hands and decided it would be a good time to build a personal website. Many developers have them to display their work, but beyond that I figured it would be a good place to leave some thoughts instead of burying them in Evernote. I wasn't sure how big a project this would be, but tried out a bunch of options and ended up quite happy with Github Pages and a flask static site generator.  </p>
+        <p>I had a bit of time on my hands this summer and decided it would be a good time to build a personal website. I thought it would be a good place to display some work and encourage myself to write more. I wasn't sure how big a project this would be but tried out a bunch of options and ended up quite happy with Github Pages and a Flask static site generator.  </p>
 <p>&nbsp;</p>
 <h6>What Else I Considered</h6>
 <ul>
 <li>
-<p>Jekyll<br />
+<p><a href="https://jekyllrb.com/docs/github-pages/">Jekyll</a><br />
 Jekyll came up with every Google, and it certainly would have been easier to implement than my solution. However, it runs on Ruby and though I have some experience with it, I was really looking for a Python project. Still, this framework is so appealing I could see moving my site over to it in the future.  </p>
 </li>
 <li>
-<p>Pelican<br />
-Pelican is a static site generator written in Python. With a minor amount of setup, I had a site that could display posts and use pre-made themes. However, I had trouble finding a theme that was relatively simple and not too garish, and I had trouble understanding the Pelican build process under the hood. While this would have worked fine, I wanted to understand every piece of the site, so decided to find another route.</p>
+<p><a href="https://docs.getpelican.com/en/stable/">Pelican</a><br />
+Pelican is a static site generator written in Python. With a minor amount of setup, I had a site that could display posts and use pre-made themes. However, I wasn't a big fan of the pre-made themes I found, and I had trouble understanding the Pelican build process under the hood. While this would have worked fine, I wanted to understand every piece of the site so decided to find another route.</p>
 </li>
 <li>
-<p>Flask<br />
-I have built several sites in Flask and find it simple and intuitive. Sure they weren't static sites, but I didn't mind paying for some simple hosting. I stumbled across this <a href="https://charlesleifer.com/blog/how-to-make-a-flask-blog-in-one-hour-or-less/">post</a> about building a blog in an hour with Flask, and started using that as a base to work off of. Ultimately, I had to ditch almost all of the example code when I decided to go with a static site, plus I was not a fan of the peewee package for SQL management.  </p>
+<p><a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a><br />
+I have built several sites in Flask and find it simple and intuitive. Sure they weren't static sites, but I didn't mind paying for some simple hosting on a server. I stumbled across this <a href="https://charlesleifer.com/blog/how-to-make-a-flask-blog-in-one-hour-or-less/">post</a> about building a blog in an hour with Flask, and started using that as a base to work off of. Ultimately, I had to ditch almost all of the example code when I decided to go with a static site, plus I was not a fan of the peewee package for SQL management.  </p>
 </li>
 </ul>
 <p>&nbsp;</p>
 <h6>My Way</h6>
 <ul>
 <li>
-<p>Github Pages<br />
-After looking around at hosting options, I settled on Github Pages. It is free and relatively straightforward to use - hard to beat that. This meant my site had to be completely static to work with Github (for now at least). Dissatisfied with the static site generators I had already looked into, I wanted a way to use flask and keep the site static.  </p>
+<p><a href="https://pages.github.com/">Github Pages</a><br />
+After looking around at hosting options, I settled on Github Pages. It is free and relatively straightforward to use - hard to beat that. This meant my site had to be completely static to work with Github (for now at least). Dissatisfied with the static site generators I had already looked into, I wanted a way to use Flask and keep the site static.  </p>
 </li>
 <li>
-<p>Frozen Flask  / Flask Flatpages<br />
+<p><a href="https://pythonhosted.org/Frozen-Flask/">Frozen-Flask</a>  / Flask Flatpages<br />
 Luckily, there is a super easy way to turn a flask site into a static site - Frozen Flask. A few extra lines of code is all it takes to take a working Flask app static. I can also choose to remove this bit of code to make it dynamic again if needed.  </p>
 </li>
 <li>
-<p>Bootstrap<br />
-Twitter's Bootstrap framework is an easy way to structure the CSS and HTML for a site. I was familiar with it from a project ~4 years ago so turned to it again, though with a steep re-learning curve.  </p>
+<p><a href="https://getbootstrap.com/">Bootstrap</a><br />
+Twitter's Bootstrap framework is an easy way to structure the CSS and HTML for a site. I was familiar with it from a project ~4 years ago so turned to it again, though I still had a steep re-learning curve.  </p>
 </li>
 <li>
-<p>Clean Blog Template<br />
+<p><a href="https://startbootstrap.com/themes/clean-blog/">Clean Blog</a> Template<br />
 Simple Bootstrap had a number of starting templates to work with. While the site retains very little of the code from the template, it was a good way to refresh my memory of how different tags and styles worked together.</p>
 </li>
 </ul>
@@ -128,7 +128,7 @@ Simple Bootstrap had a number of starting templates to work with. While the site
 <code>pages/</code> holds all of the markdown pages that are turned into blog posts or other content pages. It holds the original markdown that this page was written in. Pages are sorted based on the tags entered at the top.<br />
 <code>build/</code> - once changes are good to go, I run <code>./app.py --build</code>. This freezes the site contents into the build directory, so all markdown is now html.  </p>
 <p>&nbsp;</p>
-<p>That's about it. While I tried a lot of things to get here, I managed to keep the site simple and customizable. Check out the full code <a href="https://github.com/spencerbraun/personal_flask">here</a> and feel free to contact me with questions.</p>
+<p>That's about it. While I tried a lot of things to get here, I managed to keep the site simple and customizable. Check out the full code <a href="https://github.com/spencerbraun/personal_flask">here</a>.</p>
 
 
             </div>
