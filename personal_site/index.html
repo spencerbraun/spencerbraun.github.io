@@ -84,7 +84,7 @@
         <div class="date">2019-08-06</div>
         <p>I had a bit of time on my hands this summer and decided it would be a good time to build a personal website. I thought it would be a good place to display some work and encourage myself to write more. I wasn't sure how big a project this would be but tried out a bunch of options and ended up quite happy with Github Pages and a Flask static site generator.  </p>
 <p>&nbsp;</p>
-<h6>What Else I Considered</h6>
+<h3>What Else I Considered</h3>
 <ul>
 <li>
 <p><a href="https://jekyllrb.com/docs/github-pages/">Jekyll</a><br />
@@ -100,7 +100,7 @@ I have built several sites in Flask and find it simple and intuitive. Sure they 
 </li>
 </ul>
 <p>&nbsp;</p>
-<h6>My Way</h6>
+<h3>My Way</h3>
 <ul>
 <li>
 <p><a href="https://pages.github.com/">Github Pages</a><br />
@@ -119,7 +119,7 @@ Twitter's Bootstrap framework is an easy way to structure the CSS and HTML for a
 Simple Bootstrap had a number of starting templates to work with. While the site retains very little of the code from the template, it was a good way to refresh my memory of how different tags and styles worked together.</p>
 </li>
 </ul>
-<h6>How It All Works Together</h6>
+<h3>How It Works Together</h3>
 <p>What is left is pretty simple - a flask style site that generates static html pages based on certain templates:<br />
 <code>app.py</code> - this is the main heart of the site. It generate the routes to each webpage (about, writing, projects, or any blog post). It also freezes the site when <code>--build</code> is passed as an arg.<br />
 <code>settings.py</code> is called when the app is initiated. It provides some basic setting for how markdown pages are turned into HTML.<br />
