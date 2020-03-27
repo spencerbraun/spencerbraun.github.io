@@ -5,10 +5,15 @@
 ## General Notes
   * [Linear Albebra](Linear_Algebra.md)
   * [Causal Inference](Causal_Inference.md)
+  * [Intro to Statistical Learning](STATS202/ISL.md)
  
 
 [gimmick:theme (inverse: false)](spacelab)
 
-[gimmick:ThemeChooser](Change theme)
-
-[gimmick:forkmeongithub](http://github.com/Dynalon/mdwiki/)
+<script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+</script>
