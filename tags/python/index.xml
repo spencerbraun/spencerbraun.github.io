@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Spencer Braun</title>
+    <link>https://spencerbraun.github.io/tags/python/</link>
+    <description>Recent content in Python on Spencer Braun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 07 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://spencerbraun.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Yield Curves in Dash</title>
+      <link>https://spencerbraun.github.io/posts/tradedash/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://spencerbraun.github.io/posts/tradedash/</guid>
+      <description>With a lot of recent focus on the direction of US interest rates and the likelihood of a recession, I thought I would play around with Treasury yield data to construct an easy way to keep an eye on how yield curves are changing. For those unfamiliar, yield curves are simple plots of the yield of a Treasury bill, note, or bond versus the maturities of the securities. The Treasury publishes the market yield for each maturity daily.</description>
+    </item>
+    
+    <item>
+      <title>Creating a Personal Site From Scratch</title>
+      <link>https://spencerbraun.github.io/posts/personal_site/</link>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://spencerbraun.github.io/posts/personal_site/</guid>
+      <description>I had a bit of time on my hands this summer and decided it would be a good time to build a personal website. I thought it would be a good place to display some work and encourage myself to write more. I wasn&amp;rsquo;t sure how big a project this would be but tried out a bunch of options and ended up quite happy with Github Pages and a Flask static site generator.</description>
+    </item>
+    
+  </channel>
+</rss>

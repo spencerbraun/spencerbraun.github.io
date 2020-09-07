@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Consulting on Spencer Braun</title>
+    <link>https://spencerbraun.github.io/tags/consulting/</link>
+    <description>Recent content in Consulting on Spencer Braun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://spencerbraun.github.io/tags/consulting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lessons from Statistical Consulting</title>
+      <link>https://spencerbraun.github.io/posts/lessons_from_statistical_consulting/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://spencerbraun.github.io/posts/lessons_from_statistical_consulting/</guid>
+      <description>The Stanford Statistics department offers a unique service; any and all researchers from across the university can come discuss their ideas with Master&amp;rsquo;s and PhD students. Eager to see whether I could apply my coursework to actual questions of experimental design, inference, and prediction, I signed up to be a consultant for the quarter. The experience was as challenging as I had expected, but the difficulty did not stem from choosing the best model or interpreting p-values.</description>
+    </item>
+    
+  </channel>
+</rss>

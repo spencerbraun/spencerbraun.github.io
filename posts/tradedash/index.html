@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html><head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144357836-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-144357836-1');
+    </script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Yield Curves in Dash - Spencer Braun</title><link rel="icon" type="image/png" href=/favicon.png /><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Yield Curves in Dash" />
+<meta property="og:description" content="Web app using Dash, Plotly, and Treasury data to get a historical and current look at yield curves and spreads." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://spencerbraun.github.io/posts/tradedash/" />
+<meta property="article:published_time" content="2019-08-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-08-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Yield Curves in Dash"/>
+<meta name="twitter:description" content="Web app using Dash, Plotly, and Treasury data to get a historical and current look at yield curves and spreads."/>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://spencerbraun.github.iocss/main.css" />
+</head><body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://spencerbraun.github.io">Spencer Braun</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a> 
+		
+		<a href="/about">About</a> 
+		
+		<a href="/posts">Writing</a> 
+		
+		<a href="/tags">Tags</a> 
+		|<a class="soc" href="https://github.com/spencerbraun" title="GitHub"><i data-feather="github"></i></a><a class="soc" href="https://twitter.com/spencerfbraun/" title="Twitter"><i data-feather="twitter"></i></a><a class="soc" href="https://www.linkedin.com/in/spencerfbraun/" title="LinkedIn"><i data-feather="linkedin"></i></a></nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Yield Curves in Dash</h1>
+			<div class="meta">Posted on Aug 7, 2019</div>
+		</div>
+		
+
+		<section class="body">
+			<p>With a lot of recent focus on the direction of US interest rates and the likelihood of a recession, I thought I would play around with Treasury yield data to construct an easy way to keep an eye on how yield curves are changing. For those unfamiliar, yield curves are simple plots of the yield of a Treasury bill, note, or bond versus the maturities of the securities. The Treasury <a href="https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield">publishes</a> the market yield for each maturity daily.</p>
+<p>Using <a href="https://plot.ly/dash">Dash</a> and Plotly, I created a simple tool to pull in the daily yield data and create some metrics. Feel free to clone from github <a href="https://github.com/spencerbraun/tradedash">here</a>. Below I&rsquo;ll explain how to use and interpret the metrics displayed.</p>
+<h3 id="historical-yields">Historical Yields</h3>
+<p>The first chart simply shows the historical path for yields for each Treasury maturity. Lately while shorter term maturities (say &lt; 1 year) have been relatively flat, longer term maturities have sharply declining yields. The Federal Reserve has more direct control over short-term maturities by setting the target range for the Fed Funds rate and providing guidance through commentary and dot plots. Longer term yields are a reflection of the market&rsquo;s expectation of future interest rates. As economic data has weakened and the Fed has turned from raising rates to a potential easing cycle, longer term Treasury yields have declined.</p>
+<p><img src="/img/tradedash_historical_yields_20190807.png" alt="Historical Yields"></p>
+<h3 id="yield-spreads">Yield Spreads</h3>
+<p>Yield spreads are one place to look when discussions of an yield curve inversions are omnipresent. An inversion occurs when a shorter term Treasury becomes higher yielding than a longer term maturity. What maturity pair determines when the curve is officially inverted? Market participants do not fully agree on this question, so the chart below shows the spreads between yields of three different maturity pairs: 10 years / 2 years, 10 years / 6 months, and 5 years / 2 years. When the spread is below zero, the longer maturity Treasury has a lower yield than the shorter one, meaning that yield spread in inverted. So far the 10yr-2yr spread has not inverted, while the other two have bounced in and out of inversion.</p>
+<p><img src="/img/tradedash_yield_spreads_20190807.png" alt="Yield Spreads"></p>
+<p>Typically, one might expect long term Treasuries to yield more than shorter term due to a term premium and the expected path of future interest rates. When investors expect the economy to continue to grow steadily, eventually they would expect the Fed to increase interest rates to cool the economy before it overheats. Additionally, investors carry duration risk with longer-term treasuries since they do not know the future path of rates, which typically would command some premium in the yield of an asset. When the yield curve inverts, the market is sending some of these potential signals:
+- The market expects future interest rates to be below current interest rates due to an economic contraction. The Fed will cut rates in response to deflationary pressures or increasing unemployment, making future interest rates lower than current interest rates.
+- A coming recession will send investors running from risk assets. Treasuries are the most popular risk-free asset around, so investors will pay more for longer-term Treasuries as a way to protect their principal. More demand pushes up the price of those Treasuries, decreasing their yields.</p>
+<h3 id="yield-curves">Yield Curves</h3>
+<p>Finally, the dashboard has a graph of yield curves - every maturity plotted against their yields on a specific date. By plotting the trailing 5 days, we can see how the shape of the yield curve has changed from the recent past. Trade tensions and the recent reduction in the target Fed Funds has sent yields plunging in the last week.</p>
+<p><img src="/img/tradedash_yield_curves_20190807.png" alt="Yield Spreads"></p>
+<p>Feel free to reach out with comments, questions, or suggestions.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/economics">Economics</a></li>
+					
+					<li><a href="/tags/python">Python</a></li>
+					
+					<li><a href="/tags/projects">Projects</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr>
+
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

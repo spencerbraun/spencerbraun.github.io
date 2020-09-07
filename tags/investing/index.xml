@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Investing on Spencer Braun</title>
+    <link>https://spencerbraun.github.io/tags/investing/</link>
+    <description>Recent content in Investing on Spencer Braun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://spencerbraun.github.io/tags/investing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Book: Doing Capitalism in the Innovation Economy</title>
+      <link>https://spencerbraun.github.io/posts/doing_capitalism/</link>
+      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://spencerbraun.github.io/posts/doing_capitalism/</guid>
+      <description>Doing Capitalism in the Innovation Economy by William Janeway
+Bill Janeway has a lot to say in this book, and he does so with dense and clear prose. In three points, this book makes clear:
+ The innovation economy is a three player game among the state, the market economy, and financial institutions. The game is played with irreducible uncertainty, and playing by the rules of homo-economicus (some neoclassical rational agent) is not a successful strategy.</description>
+    </item>
+    
+  </channel>
+</rss>
