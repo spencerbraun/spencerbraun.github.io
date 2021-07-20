@@ -2,21 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ML on Spencer Braun</title>
-    <link>https://spencerbraun.github.io/tags/ml/</link>
+    <link>/tags/ml/</link>
     <description>Recent content in ML on Spencer Braun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://spencerbraun.github.io/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/ml/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Selectively Editable Language Models</title>
+      <link>/posts/selectively-editable-language-models/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/selectively-editable-language-models/</guid>
+      <description>The post belows explains a project in editing lanugage models I completed as part of Stanford’s course in natural lanugage processing. If you want to skip to the point, the report and code are freely available.
+Background: Taming Large Language Models Large language models have been an area of exciting development in the last few years, and we now have applications and entire companies built around their improving performance and utility.</description>
+    </item>
+    
+    <item>
       <title>Unsupervised Text Style Transfer with Deep Learning</title>
-      <link>https://spencerbraun.github.io/posts/generative_text_style_transfer/</link>
+      <link>/posts/generative_text_style_transfer/</link>
       <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://spencerbraun.github.io/posts/generative_text_style_transfer/</guid>
+      <guid>/posts/generative_text_style_transfer/</guid>
       <description>Natural Language Processing (NLP) is one area of deep learning that continues to make substantial, and often surprising, progress while also adding value to existing businesses. Supervised tasks like neural machine translation produce high quality, real-time results and Gmail&amp;rsquo;s predictive text feature often feels like magic. I have been most interested in recent applications of generative text models, such as using GPT-2 to play chess, write poetry, or create custom games.</description>
     </item>
     

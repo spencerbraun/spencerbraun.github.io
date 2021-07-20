@@ -120,7 +120,7 @@ figure h4::before {
 }
 
 /* Code blocks */
-code {
+/* code {
   background-color: #f1f1f1;
   padding: .1em .2em;
 }
@@ -135,14 +135,14 @@ pre {
 .highlight pre ::selection {
   background: rgba(255, 255, 255, 0.2);
   color: inherit;
-}
+} */
 
-pre code {
+/* pre code {
   background-color: transparent;
   color: inherit;
   font-size: 100%;
   padding: 0;
-}
+} */
 
 /* Containers */
 .content {

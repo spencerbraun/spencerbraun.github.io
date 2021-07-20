@@ -2,102 +2,120 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Spencer Braun</title>
-    <link>https://spencerbraun.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Spencer Braun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://spencerbraun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>ML</title>
-      <link>https://spencerbraun.github.io/tags/ml/</link>
-      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      <title>Meta-Learning</title>
+      <link>/tags/meta-learning/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://spencerbraun.github.io/tags/ml/</guid>
+      <guid>/tags/meta-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ML</title>
+      <link>/tags/ml/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>/tags/nlp/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nlp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Projects</title>
-      <link>https://spencerbraun.github.io/tags/projects/</link>
-      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      <link>/tags/projects/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://spencerbraun.github.io/tags/projects/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PyTorch</title>
-      <link>https://spencerbraun.github.io/tags/pytorch/</link>
-      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://spencerbraun.github.io/tags/pytorch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Statistics</title>
-      <link>https://spencerbraun.github.io/tags/statistics/</link>
-      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://spencerbraun.github.io/tags/statistics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Consulting</title>
-      <link>https://spencerbraun.github.io/tags/consulting/</link>
-      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://spencerbraun.github.io/tags/consulting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Writing</title>
-      <link>https://spencerbraun.github.io/tags/writing/</link>
-      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://spencerbraun.github.io/tags/writing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Economics</title>
-      <link>https://spencerbraun.github.io/tags/economics/</link>
-      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://spencerbraun.github.io/tags/economics/</guid>
+      <guid>/tags/projects/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://spencerbraun.github.io/tags/python/</link>
+      <link>/tags/python/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PyTorch</title>
+      <link>/tags/pytorch/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pytorch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Writing</title>
+      <link>/tags/writing/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/writing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Statistics</title>
+      <link>/tags/statistics/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Consulting</title>
+      <link>/tags/consulting/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/consulting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Economics</title>
+      <link>/tags/economics/</link>
       <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://spencerbraun.github.io/tags/python/</guid>
+      <guid>/tags/economics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Books</title>
-      <link>https://spencerbraun.github.io/tags/books/</link>
+      <link>/tags/books/</link>
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://spencerbraun.github.io/tags/books/</guid>
+      <guid>/tags/books/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Investing</title>
-      <link>https://spencerbraun.github.io/tags/investing/</link>
+      <link>/tags/investing/</link>
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://spencerbraun.github.io/tags/investing/</guid>
+      <guid>/tags/investing/</guid>
       <description></description>
     </item>
     
