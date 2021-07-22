@@ -4,7 +4,7 @@ author: Spencer Braun
 date: '2021-07-22'
 slug: demand-forecasting-with-bayesian-methods
 categories: []
-description: 
+description: Predicting blood platelet demand using online and GP regression
 tags:
   - ML
   - Projects
@@ -12,7 +12,7 @@ tags:
   - Statistics
   - TensorFlow
   - Bayesian
-draft: yes
+draft: no
 ---
 
 

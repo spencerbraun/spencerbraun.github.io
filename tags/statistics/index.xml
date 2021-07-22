@@ -6,10 +6,19 @@
     <description>Recent content in Statistics on Spencer Braun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Jul 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://spencerbraun.github.io/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Demand Forecasting with Bayesian Methods</title>
+      <link>https://spencerbraun.github.io/posts/demand-forecasting-with-bayesian-methods/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://spencerbraun.github.io/posts/demand-forecasting-with-bayesian-methods/</guid>
+      <description>The Stanford Medical system sees a constant stream of patients through its doors every year, many of whom require intensive care. Blood transfusions are a common occurrence as part of a therapy or surgery, but blood platelets are a scarce resource that have a short shelf life. Therefore accurately predicting future demand is essential in order to minimize waste while ensuring hospitals have enough on hand for the current patient population.</description>
+    </item>
     
     <item>
       <title>Unsupervised Text Style Transfer with Deep Learning</title>
