@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Economics on Spencer Braun</title>
-    <link>https://spencerbraun.github.io/tags/economics/</link>
+    <link>/tags/economics/</link>
     <description>Recent content in Economics on Spencer Braun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://spencerbraun.github.io/tags/economics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/economics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Yield Curves in Dash</title>
-      <link>https://spencerbraun.github.io/posts/tradedash/</link>
+      <link>/posts/tradedash/</link>
       <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://spencerbraun.github.io/posts/tradedash/</guid>
+      <guid>/posts/tradedash/</guid>
       <description>With a lot of recent focus on the direction of US interest rates and the likelihood of a recession, I thought I would play around with Treasury yield data to construct an easy way to keep an eye on how yield curves are changing. For those unfamiliar, yield curves are simple plots of the yield of a Treasury bill, note, or bond versus the maturities of the securities. The Treasury publishes the market yield for each maturity daily.</description>
     </item>
     
     <item>
       <title>Book: Doing Capitalism in the Innovation Economy</title>
-      <link>https://spencerbraun.github.io/posts/doing_capitalism/</link>
+      <link>/posts/doing_capitalism/</link>
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://spencerbraun.github.io/posts/doing_capitalism/</guid>
+      <guid>/posts/doing_capitalism/</guid>
       <description>Doing Capitalism in the Innovation Economy by William Janeway
 Bill Janeway has a lot to say in this book, and he does so with dense and clear prose. In three points, this book makes clear:
  The innovation economy is a three player game among the state, the market economy, and financial institutions. The game is played with irreducible uncertainty, and playing by the rules of homo-economicus (some neoclassical rational agent) is not a successful strategy.</description>
@@ -33,10 +33,10 @@ Bill Janeway has a lot to say in this book, and he does so with dense and clear 
     
     <item>
       <title>Book: The Dream Machine</title>
-      <link>https://spencerbraun.github.io/posts/the_dream_machine/</link>
+      <link>/posts/the_dream_machine/</link>
       <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://spencerbraun.github.io/posts/the_dream_machine/</guid>
+      <guid>/posts/the_dream_machine/</guid>
       <description>The Dream Machine by M. Mitchell Waldrop
 In The Dream Machine, M. Mitchell Waldrop loosely tracks the career of J.C.R. Licklider, an MIT researcher and ARPA administrator who had a grand vision of human-computer symbiosis and networking.
 More generally, Waldrop narrates the story of the modern computer, which one might simply see as a linear progression. Starting with WWII, mathematicians devised physical systems that could compute answers to specific questions, such as a mechanical differential analyzer.</description>
