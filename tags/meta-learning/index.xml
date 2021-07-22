@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Meta-Learning on Spencer Braun</title>
-    <link>/tags/meta-learning/</link>
+    <link>https://spencerbraun.github.io/tags/meta-learning/</link>
     <description>Recent content in Meta-Learning on Spencer Braun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/meta-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://spencerbraun.github.io/tags/meta-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Selectively Editable Language Models</title>
-      <link>/posts/selectively-editable-language-models/</link>
+      <link>https://spencerbraun.github.io/posts/selectively-editable-language-models/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>/posts/selectively-editable-language-models/</guid>
-      <description>The post belows explains a project in editing lanugage models I completed as part of Stanford’s course in natural lanugage processing. If you want to skip to the point, the report and code are freely available.
+      <guid>https://spencerbraun.github.io/posts/selectively-editable-language-models/</guid>
+      <description>The post belows explains a project in editing language models I completed as part of Stanford’s course in natural language processing. If you want to skip to the point, the report and code are freely available.
 Background: Taming Large Language Models Large language models have been an area of exciting development in the last few years, and we now have applications and entire companies built around their improving performance and utility.</description>
     </item>
     

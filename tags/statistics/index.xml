@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statistics on Spencer Braun</title>
-    <link>/tags/statistics/</link>
+    <link>https://spencerbraun.github.io/tags/statistics/</link>
     <description>Recent content in Statistics on Spencer Braun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://spencerbraun.github.io/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Unsupervised Text Style Transfer with Deep Learning</title>
-      <link>/posts/generative_text_style_transfer/</link>
+      <link>https://spencerbraun.github.io/posts/generative_text_style_transfer/</link>
       <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/generative_text_style_transfer/</guid>
+      <guid>https://spencerbraun.github.io/posts/generative_text_style_transfer/</guid>
       <description>Natural Language Processing (NLP) is one area of deep learning that continues to make substantial, and often surprising, progress while also adding value to existing businesses. Supervised tasks like neural machine translation produce high quality, real-time results and Gmail&amp;rsquo;s predictive text feature often feels like magic. I have been most interested in recent applications of generative text models, such as using GPT-2 to play chess, write poetry, or create custom games.</description>
     </item>
     
     <item>
       <title>Lessons from Statistical Consulting</title>
-      <link>/posts/lessons_from_statistical_consulting/</link>
+      <link>https://spencerbraun.github.io/posts/lessons_from_statistical_consulting/</link>
       <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/lessons_from_statistical_consulting/</guid>
+      <guid>https://spencerbraun.github.io/posts/lessons_from_statistical_consulting/</guid>
       <description>The Stanford Statistics department offers a unique service; any and all researchers from across the university can come discuss their ideas with Master&amp;rsquo;s and PhD students. Eager to see whether I could apply my coursework to actual questions of experimental design, inference, and prediction, I signed up to be a consultant for the quarter. The experience was as challenging as I had expected, but the difficulty did not stem from choosing the best model or interpreting p-values.</description>
     </item>
     
