@@ -2,8 +2,7 @@
 <html lang="{{ site.lang | default: " en-US" }}">
 
 <head>
-  <!-- <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script> -->
+  <link rel="stylesheet" href="{{ " /assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +12,9 @@
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
+
+  {% include mathjax.html %}
+  <link rel="stylesheet" href="{{ " /assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
 </head>
 
 <body>
