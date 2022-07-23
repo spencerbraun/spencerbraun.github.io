@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html><head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144357836-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-144357836-1');
+    </script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>NAACL 2022: Does Summary Evaluation Survive Translation? - Spencer Braun</title><link rel="icon" type="image/png" href=/favicon.png /><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="NAACL 2022: Does Summary Evaluation Survive Translation?" />
+<meta property="og:description" content="Predicting blood platelet demand using online and GP regression" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://spencerbraun.github.io/posts/does-summary-evaluation-survive-translation/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-22T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NAACL 2022: Does Summary Evaluation Survive Translation?"/>
+<meta name="twitter:description" content="Predicting blood platelet demand using online and GP regression"/>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://spencerbraun.github.io/css/main.css" />
+	<link rel="stylesheet" href="https://spencerbraun.github.io/css/github.min.css" rel="stylesheet" id="theme-stylesheet">
+	<script src="https://spencerbraun.github.io/js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+	
+	
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+	
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+			displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+			processEscapes: true,
+			processEnvironments: true
+		},
+		// Center justify equations in code and markdown cells. Elsewhere
+		// we use CSS to left justify single line equations in code cells.
+		displayAlign: 'center',
+		"HTML-CSS": {
+			styles: {'.MathJax_Display': {"margin": 0}},
+			linebreaks: { automatic: true }
+		}
+	});
+	</script>
+	
+</head><body>
+        <div class="content">
+<header>
+	<div class="main">
+		<a href="https://spencerbraun.github.io/">Spencer Braun</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a> 
+		
+		<a href="/work">Work</a> 
+		
+		<a href="/tags">Tags</a> 
+		|<a class="soc" href="https://github.com/spencerbraun" title="GitHub"><i data-feather="github"></i></a><a class="soc" href="https://twitter.com/spencerfbraun/" title="Twitter"><i data-feather="twitter"></i></a><a class="soc" href="https://www.linkedin.com/in/spencerfbraun/" title="LinkedIn"><i data-feather="linkedin"></i></a></nav>
+	<link rel="stylesheet" href="https://spencerbraun.github.io/css/github.min.css" rel="stylesheet" id="theme-stylesheet">
+	<script src="https://spencerbraun.github.io/js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+</header>
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">NAACL 2022: Does Summary Evaluation Survive Translation?</h1>
+		</div>
+		
+
+		<section class="body">
+			<p> </p>
+<p><a href="https://aclanthology.org/2022.naacl-main.173/">Paper</a></p>
+<p><a href="https://github.com/PrimerAI/primer-research/tree/main/summary_translation">Code</a></p>
+<p> </p>
+<p>I recently presented a paper at the <a href="https://2022.naacl.org/">NAACL 2022</a> conference for work conducted with my colleagues at <a href="https://primer.ai/">Primer</a> in collaboration with Technische Universität Berlin. At Primer, summarization is a core task that our platform performs daily, but summarization evaluation is quite challenging even in English. Since we are often presented with data from many languages, we explored whether summarization datasets could remain useful under translation, as resources for non-English languages are far less plentiful. I&rsquo;ll outline some of the methods and findings of our research below.</p>
+<h2 id="motivation">Motivation</h2>
+<p>As I already hinted, it would be extremely useful if we could reuse English summarization datasets to evaluate similar models in other languages. Summary evaluation is a difficult task and has developed into a large field of its own. Typically we require a large dataset with reference texts, human and machine written summaries, and human evaluations of those summaries. It would be quite costly to perform the same data collection in many other languages. If we can simply reuse the texts and evaluations, advances in summarization could proliferate more quickly, especially to lower resource languages.</p>
+<p>As a related question we might also ask: &ldquo;how do we compare the performance of translation and summary evaluation?&rdquo; Understanding the weaknesses of each technology can help focus efforts of future research.</p>
+<p>Why is this problem difficult? For one, machine translation is far from perfect and the distortions it might introduce are not uniform across the texts.
+Translation may correct and simplify some texts, introduce errors into others, and push components of text quality like fluency, coherence, consistency, and relevance in different directions.
+Despite these known issues, the translation quality may still be high enough to maintain the usefulness of summarization datasets.</p>
+<h2 id="approach">Approach</h2>
+<h3 id="dataset">Dataset</h3>
+<p>To try to answer these questions, we focused on the <a href="https://aclanthology.org/2021.tacl-1.24/">SummEval</a> dataset, which consists of 100 texts, each with 11 human written reference summaries and 17 machine generated summaries.</p>
+<p><img src="/img/naacl_summeval.png" alt="Translation of the SummEval Dataset"></p>
+<p>We fed all texts and summaries through Helsinki NLP Opus translation models, freely available on the HuggingFace model hub. Ultimately this produced 7 non-English copies of the dataset in French, German, Italian, Spanish, Afrikaans, Hindi, and Russian, languages chosen for their diversity in origins and relationships to English.</p>
+<h3 id="evaluation-measures">Evaluation Measures</h3>
+<p>We also explored a number of automated evaluation measures that lend themselves to multi-lingual tasks.</p>
+<p>Reference free measures do not rely on the human written reference summaries and only require the reference text and machine generated summary. From this category, we experimented with Jensen-Shannon, ESTIME, and BLANC.</p>
+<p>Reference-based measures rely on the overlap between the reference summaries and machine generated summaries. From this category we considered BLEU, BERTScore, and ROUGE 1,2, and L.</p>
+<h2 id="results">Results</h2>
+<h3 id="correlations">Correlations</h3>
+<p>We first considered simple rank correlations between human and automated evaluations in English. The human experts evaluated summaries along four dimensions of quality: coherence, consistency, fluency, and relevance.</p>
+<p> </p>
+<p><img src="/img/naacl_table2_kendall.png" alt=""></p>
+<p> </p>
+<p>Generally correlations were low, though some automated measures stand out along particular lines of quality. We can see ESTIME, Jensen-Shannon, and BERTScore each excel in particular qualities, but none is dominant across all qualities. Despite the low correlations, these automated measures remain the standard for summary evaluation, and some research suggests that human evaluations are not an unblemished gold standard.</p>
+<p> </p>
+<p><img src="/img/naacl_table1_kendall.png" alt=""></p>
+<p> </p>
+<p>If instead we consider the correlations between an automated evaluation measure in English versus another language, we find much stronger correlations, especially in German, French, Spanish, Italian, and Afrikaans.</p>
+<p>This result hints that translation may introduce less noise than already exists when comparing human and automated summary evaluations. To test this hypothesis more rigorously, we sought statistical tests to verify that correlations between expert scores and automated measures remain invariant under translation.</p>
+<h3 id="statistical-tests">Statistical Tests</h3>
+<p>Statistical significance provides a quantitative criterion for whether an automated measure has “survived” translation. Even if automated measures are not perfect proxies for human judgment, we may consider them useful under translation if they score summaries in a consistent manner.</p>
+<p>While traditional significance tests are meant to detect a difference between test statistics, we instead want to detect a lack of difference. We turn to equivalence testing, a testing paradigm that reverses traditional null and alternative hypotheses. The Two One Sided Tests, or TOST, method of equivalence testing requires setting a margin of equivalence, here $\Delta_E$, within which correlations are considered the same.</p>
+<p> </p>
+<p>$$
+H_0:  \rho_1 - \rho_2 &lt; -\Delta_E \text{  or  } \rho_1 - \rho_2 &gt; \Delta_E
+$$
+$$
+H_1: -\Delta_E &lt; \rho_1 - \rho_2 &lt; \Delta_E
+$$</p>
+<p> </p>
+<p>When the absolute difference between two correlations lies within this margin, it is evidence for the alternative hypothesis. Unfortunately this presents a parameter that must be chosen by the experimenter, and we explore the impact of the margin choice on our conclusions.</p>
+<p>We explored a range of equivalence margins to understand its impact on the significance of our results. We find that the choice of margin is indeed quite impactful on the number of equivalent results found. We focus on results using a margin tailored to each measure of quality, calculated as the standard deviation over measure-expert correlations. Below are the results of the signficance tests using the standard deviation margin. The blue squares indicate a significant result of equivalence while the red outlines indicate the result remained significant after the multiple testing correction.</p>
+<p> </p>
+<p><img src="/img/naacl_tost_std_box.png" alt=""></p>
+<p> </p>
+<p>We find that the languages that are closer to English are more likely to preserve the relationship between automatic and human evaluation. Fluency and consistency appear more difficult to maintain under translation than coherence or relevance.</p>
+<h3 id="qualitative-evaluation">Qualitative Evaluation</h3>
+<p>We employ round trip translation to isolate the effects of translation noise, in which we translate the data to another language and then translate it again back to English.By returning each text to English, the performance of the summary evaluations should not be affected by language.</p>
+<p>Therefore to isolate the effects of translation, we consider the shift in probability that one measure is better than another in bootstrapped samples under translation and round-trip translation.</p>
+<p>Under forward translation, we see greater shifts in probability than when we return the text back to English. This is visually represented by the points that lie under the y=x line in the figure below.</p>
+<p> </p>
+<p><img src="/img/naacl_roundtrip_log.png" alt=""></p>
+<p> </p>
+<p>While the shifts for round-trip translations are on average smaller, they demonstrate that translation is far from perfect and introduces enough noise to be detected by the summarization evaluation measures. This analysis serves as a tool for quantitatively disentangling the effect of performing the evaluation in another language and the noise introduced by translation models.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>We found that translation can preserve automatic evaluation measures along certain dimensions of summary quality, though there are clear differences in performance based on the choice of target language, automated measure, and notion of quality.</p>
+<p>There is a lot of potential for future work to expand the utility of equivalence testing and probe the determinants of evaluation survival under translations. Our methods could also easily be extended beyond summarization evaluation. English is still a far more resourced language in NLP, and we present essential tools for accelerating their proliferation to other languages.</p>
+<p>If interested, I invite you to read the full paper and review the code linked above.</p>
+
+		</section>
+
+		<br>
+		<div class="meta">Posted on Jul 22, 2022</div>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/%20/tags/nlp">NLP</a></li>
+					
+					<li><a href="/%20/tags/statistics">Statistics</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr>
+
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

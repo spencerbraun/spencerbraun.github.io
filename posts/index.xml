@@ -6,7 +6,18 @@
     <description>Recent content in Posts on Spencer Braun</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://spencerbraun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://spencerbraun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NAACL 2022: Does Summary Evaluation Survive Translation?</title>
+      <link>https://spencerbraun.github.io/posts/does-summary-evaluation-survive-translation/</link>
+      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://spencerbraun.github.io/posts/does-summary-evaluation-survive-translation/</guid>
+      <description>Paper
+Code
+I recently presented a paper at the NAACL 2022 conference for work conducted with my colleagues at Primer in collaboration with Technische Universität Berlin. At Primer, summarization is a core task that our platform performs daily, but summarization evaluation is quite challenging even in English. Since we are often presented with data from many languages, we explored whether summarization datasets could remain useful under translation, as resources for non-English languages are far less plentiful.</description>
+    </item>
+    
     <item>
       <title>Demand Forecasting with Bayesian Methods</title>
       <link>https://spencerbraun.github.io/posts/demand-forecasting-with-bayesian-methods/</link>
