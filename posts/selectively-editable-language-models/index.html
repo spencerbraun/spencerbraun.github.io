@@ -64,8 +64,6 @@
 		<a href="/">Home</a> 
 		
 		<a href="/work">Work</a> 
-		
-		<a href="/tags">Tags</a> 
 		|<a class="soc" href="https://github.com/spencerbraun" title="GitHub"><i data-feather="github"></i></a><a class="soc" href="https://twitter.com/spencerfbraun/" title="Twitter"><i data-feather="twitter"></i></a><a class="soc" href="https://www.linkedin.com/in/spencerfbraun/" title="LinkedIn"><i data-feather="linkedin"></i></a></nav>
 	<link rel="stylesheet" href="https://spencerbraun.github.io/css/github.min.css" rel="stylesheet" id="theme-stylesheet">
 	<script src="https://spencerbraun.github.io/js/highlight.pack.js"></script>
@@ -81,13 +79,16 @@
 
 		<section class="body">
 			
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>The post belows explains a project in editing language models I completed as part of Stanford’s course in natural language processing. If you want to skip to the point, the <a href="http://web.stanford.edu/class/cs224n/reports/final_reports/report032.pdf">report</a> and <a href="https://github.com/spencerbraun/editable_nlp">code</a> are freely available.</p>
 <div id="background-taming-large-language-models" class="section level3">
 <h3>Background: Taming Large Language Models</h3>
 <p>Large language models have been an area of exciting development in the last few years, and we now have applications and entire companies built around their improving performance and utility. The number of pretrained models hosted on <a href="https://huggingface.co/models">Hugging Face</a> has exploded, companies built on GPT-3’s API are rolling out betas, and <a href="https://copilot.github.com/">GitHub Copilot</a> <a href="https://twitter.com/jeremyphoward/status/1417331228752023554?s=20">amazes</a> senior ML researchers (though not without controversies). All of these language models - from encoders like BERT variants, to decoders like GPT-3 or encoder-decoders like T5 and BART - rely on hundreds of hours of pretraining, unsupervised methods to endow the model parameters with familiarity in natural language’s syntax and semantics. While incredibly useful, this task also encodes <a href="https://arxiv.org/pdf/2012.07805.pdf">specific factual knowledge</a> in the model that remains static over time, despite changing facts on the ground in the real world. Fine-tuning these models on a specific task or dataset is quite common but is a costly and non-localized method for changing a specific fact learned during pretraining. Performance continues to improve in increasing model size, so any believer in the <a href="https://www.gwern.net/Scaling-hypothesis">scaling hypothesis</a> should only expect model alteration to become a more pressing problem (at least in the near future).</p>
+<p> </p>
 <p>With this in mind, I set out to explore alternative methods of knowledge editing - ways in which we could update a specific fact and its context without degrading a model’s performance on unrelated language samples. Concretely, imagine a setting in which a model is deployed to generate sentences based on political news stories that occurred each day. If that model was pretrained on a text dataset created 5 years ago, a prompt like “New policies announced by the President,…” would likely fail to produce the correct name.</p>
+<p> </p>
 <p>With the guidance of Eric Mitchell, a CS PhD student in the Stanford AI Lab, I extended an existing framework for editing deep learning models to the space of autoregressive transformer decoders.</p>
 </div>
 <div id="editable-neural-networks" class="section level3">
@@ -97,14 +98,19 @@
 <div id="meta-learning-learning-to-learn" class="section level3">
 <h3>Meta-Learning: Learning to Learn</h3>
 <p>For many practitioners familiar with machine learning but without prior experience with meta-learning, it can be an unintuitive concept to grasp. In vanilla neural network training, an objective is specified by a loss function, the loss is evaluated over some training samples, and the parameters are updated by small steps in a direction that decreases this loss by some form of gradient descent. In meta-learning, there are multiple objectives and the model parameters are trained to be adaptable to several, sometimes competing, tasks. Instead of evaluating the training success over a concrete metric, we are endowing the model with the ability to learn faster in the future.</p>
+<p> </p>
 <p>I specifically focused on a type of meta-learning known as MAML - model-agnostic meta-learning - introduced by <a href="https://arxiv.org/pdf/1703.03400.pdf">Finn et al.</a> in 2017. As they describe in the problem set-up:</p>
+<p> </p>
 <blockquote>
 <p>The goal of few-shot meta-learning is to train a model that can quickly adapt to a new task using only a few data points and training iterations. To accomplish this, the model or learner is trained during a meta-learning phase on a set of tasks, such that the trained model can quickly adapt to new tasks using only a small number of examples or trials. In effect, the meta-learning problem treats entire tasks as training examples.</p>
 </blockquote>
+<p> </p>
 <p>What does this look like in practice? There are some excellent tools available for MAML, and I found Facebook’s PyTorch add-on <a href="https://github.com/facebookresearch/higher">Higher</a> to be quite easy to use. It allows us to grab the model parameters, compute intermediate gradients, and take some gradient steps functionally. Important to understand is the distinction between the “inner loop” and “outer loop” of MAML. I found the description provided by Zintgraf et al. in <a href="https://arxiv.org/pdf/1810.03642.pdf">“Fast Context Adaptation via Meta-Learning”</a> quite clear:</p>
+<p> </p>
 <blockquote>
 <p>MAML is trained with an interleaved training procedure, comprised of inner loop and outer loop updates that operate on a batch of related tasks at each iteration. In the inner loop, MAML learns task-specific network parameters by performing one gradient step on a task-specific loss. Then, in the outer loop, the model parameters from before the inner loop update are updated to reduce the loss after the inner loop update on the individual tasks. Hence, MAML learns a model initialisation that can generalise to a new task after only a few gradient updates at test time.</p>
 </blockquote>
+<p> </p>
 <p>In code, the training process looks like:</p>
 <pre class="python"><code># init an &quot;outer loop&quot; optimizer for the total loss
 opt = torch.optim.Adam(model.parameters(), lr=1e-5)
@@ -141,16 +147,19 @@ for train_step, (base_example, meta_example) in enumerate(dataloader):
 
         opt.step()
         opt.zero_grad()</code></pre>
-<p>In the snippet above, you can get a sense of how MAML is implemented in practice. For more on MAML and meta-learning, I highly recommend <a href="https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html">this excellent blog</a> post by Lillian Weng.</p>
+<p>In the snippet above, you can get a sense of how MAML is implemented in practice. For more on MAML and meta-learning, I recommend <a href="https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html">this blog</a> post by Lilian Weng.</p>
 </div>
 <div id="experiments" class="section level3">
 <h3>Experiments</h3>
 <p>I focused on a single toy setting - altering the names associated with a person in a given context. My approach incorporated several distinct steps to build and evaluate what I termed the “language editing” procedure. First, I constructed a novel dataset consisting of an unedited passage, a sentence of the passage with a permuted named entity, and a record of the named entity changed. Second, a MAML training architecture was written allowing for optimization over both a typical language model cross-entropy loss along with an “adaptability” loss. Finally, performance measures were created to understand how the language editing procedure altered model parameters and highlight areas for future improvement.</p>
-<p><em>Data</em></p>
+<p> </p>
+<p><strong>Data</strong></p>
 <p>The dataset was generated using WikiText-103, available on the <a href="https://huggingface.co/datasets/wikitext">Hugging Face datasets hub</a>. I used a SpaCy named entity recognition model to collect all named persons and create pairs of original sentences and copies with swapped names.</p>
-<p><em>Model</em></p>
+<p> </p>
+<p><strong>Model</strong></p>
 <p>I used a pretrained <a href="https://huggingface.co/distilgpt2">DistilGPT2</a> model, an autoregressive transformer language model with fewer parameters than a typical GPT-2 model. This was chosen out of practicality, as MAML stores a copy of the model parameters in memory.</p>
-<p><em>Objectives</em></p>
+<p> </p>
+<p><strong>Objectives</strong></p>
 <p>Following the example set by Sinitsin et al., I evaluated three losses that were weighted and backpropagated through the network. In the inner-loop optimization, the model parameters were pushed to learn the edited named entity via a cross-entropy loss. In the outer-loop optimization, the edit loss is defined as the cross-entropy of the altered MAML model on the edited sentence. The base loss is the original model’s cross-entropy on the unedited passage. Finally a locality loss is imposed by taking the KL divergence between the probabilities output by the original and meta-learned model on the same passage. This attempts to preserve the meta-learned model’s performance on unedited samples. For more details, I suggest reading section 3 of the report.</p>
 <div class="figure">
 <img src="/img/editable_diag_paper.png" alt="" />
@@ -160,8 +169,11 @@ for train_step, (base_example, meta_example) in enumerate(dataloader):
 <div id="results-locality-is-key" class="section level3">
 <h3>Results: Locality is Key</h3>
 <p>After several ablations, I found that this training procedure could allow a pretrained decoder to pretty effectively incorporate a simple edit with minimal change in overall perplexity on the validation set. This result was especially promising given the lack of success when the edit was applied to a simply fine-tuned model.</p>
+<p> </p>
 <p>However, the result leads to obvious questions about the practicality of the experimental setting. I attempted to have the language model update on a single edit after the MAML procedure, but in a deployed model we likely would want to make hundreds of edits each month. I have been performing more research on varied editing settings and hope to find a robust methodology.</p>
+<p> </p>
 <p>One lesson that I found to be key in this project is the importance of minimizing model degradation on other, non-edited samples. There were many hyperparameter settings that allowed for successful output editing, but many came with a high cost to the overall perplexity of the model. Looking at the actual language produced by these degraded models demonstrated that even small changes in parameters could render the models useless.</p>
+<p> </p>
 <p>This all suggests that model editing is a rich area of research with many problems yet to be solved. I encourage you to check out the <a href="http://web.stanford.edu/class/cs224n/reports/final_reports/report032.pdf">project report</a> and <a href="https://github.com/spencerbraun/editable_nlp">code</a> if interested!</p>
 </div>
 

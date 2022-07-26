@@ -13,7 +13,7 @@
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://spencerbraun.github.io/about/</guid>
-      <description>I&amp;rsquo;m a research scientist focused on natural language processing and multimodal applications of transformers. I currently work at Primer, a startup focused on bringing NLP-enhanced tools to intelligence and defense applications. My research interests are broad, but lately I am especially excited by information embedding and retrieval, relation extraction and growing knowledge bases, and data efficient methods.
+      <description>I&amp;rsquo;m a research scientist focused on natural language processing and multimodal applications of transformers. I currently work at Primer, a startup focused on bringing NLP-enhanced tools to national intelligence and defense. My research interests are broad, but lately I am especially excited by information embedding and retrieval, relation extraction and growing knowledge bases, and data efficient methods.
 My prior experiences are diverse, and I&amp;rsquo;m lucky to have collaborated with many talented economists, statisticians, computer scientists, and physicists.</description>
     </item>
     
@@ -26,6 +26,16 @@ My prior experiences are diverse, and I&amp;rsquo;m lucky to have collaborated w
       <description>Paper
 Code
 I recently presented a paper at the NAACL 2022 conference for work conducted with my colleagues at Primer in collaboration with Technische Universität Berlin. At Primer, summarization is a core task that our platform performs daily, but summarization evaluation is quite challenging even in English. Since we are often presented with data from many languages, we explored whether summarization datasets could remain useful under translation, as resources for non-English languages are far less plentiful.</description>
+    </item>
+    
+    <item>
+      <title>Socratic Models - AI Ensembles</title>
+      <link>https://spencerbraun.github.io/posts/socratic-models-applications/</link>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://spencerbraun.github.io/posts/socratic-models-applications/</guid>
+      <description>The period of 2018-2020 was a critical time for progress in natural language processing. On the back of Transformers, a wave of value was created with products like text completion, sentiment analysis, entity recognition, and writing improvement tools. The process for creating these technologies would be familiar to data scientists across domains: collect and label data, train and fine-tune models, test different architectures, and optimize hyperparameters.
+For those close to NLP research and development, the last year has presented a clear break from this incremental progress.</description>
     </item>
     
     <item>

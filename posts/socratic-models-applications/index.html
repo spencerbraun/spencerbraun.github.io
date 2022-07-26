@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html><head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144357836-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-144357836-1');
+    </script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Socratic Models - AI Ensembles - Spencer Braun</title><link rel="icon" type="image/png" href=/favicon.png /><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Socratic Models - AI Ensembles" />
+<meta property="og:description" content="As language models and multimodal models become more powerful, domain-specific finetuning may no longer be the dominant approach to powering AI applications. I looked into the growing literature on AI ensembles and built a Streamlit demo of these approaches to understand their abilities and failure modes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://spencerbraun.github.io/posts/socratic-models-applications/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-28T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Socratic Models - AI Ensembles"/>
+<meta name="twitter:description" content="As language models and multimodal models become more powerful, domain-specific finetuning may no longer be the dominant approach to powering AI applications. I looked into the growing literature on AI ensembles and built a Streamlit demo of these approaches to understand their abilities and failure modes."/>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://spencerbraun.github.io/css/main.css" />
+	<link rel="stylesheet" href="https://spencerbraun.github.io/css/github.min.css" rel="stylesheet" id="theme-stylesheet">
+	<script src="https://spencerbraun.github.io/js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+	
+	
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+	
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+			displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+			processEscapes: true,
+			processEnvironments: true
+		},
+		// Center justify equations in code and markdown cells. Elsewhere
+		// we use CSS to left justify single line equations in code cells.
+		displayAlign: 'center',
+		"HTML-CSS": {
+			styles: {'.MathJax_Display': {"margin": 0}},
+			linebreaks: { automatic: true }
+		}
+	});
+	</script>
+	
+</head><body>
+        <div class="content">
+<header>
+	<div class="main">
+		<a href="https://spencerbraun.github.io/">Spencer Braun</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a> 
+		
+		<a href="/work">Work</a> 
+		|<a class="soc" href="https://github.com/spencerbraun" title="GitHub"><i data-feather="github"></i></a><a class="soc" href="https://twitter.com/spencerfbraun/" title="Twitter"><i data-feather="twitter"></i></a><a class="soc" href="https://www.linkedin.com/in/spencerfbraun/" title="LinkedIn"><i data-feather="linkedin"></i></a></nav>
+	<link rel="stylesheet" href="https://spencerbraun.github.io/css/github.min.css" rel="stylesheet" id="theme-stylesheet">
+	<script src="https://spencerbraun.github.io/js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+</header>
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Socratic Models - AI Ensembles</h1>
+		</div>
+		
+
+		<section class="body">
+			
+<script src="https://spencerbraun.github.io/posts/socratic-models-applications/index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>The period of 2018-2020 was a critical time for progress in natural language processing. On the back of Transformers, a wave of value was created with products like text completion, sentiment analysis, entity recognition, and writing improvement tools. The process for creating these technologies would be familiar to data scientists across domains: collect and label data, train and fine-tune models, test different architectures, and optimize hyperparameters.</p>
+<p> </p>
+<p>For those close to NLP research and development, the last year has presented a clear break from this incremental progress. Large pretrained models can be prompted for answers rather than trained, single models can communicate across multiple modalities, and factual information stored in graphs and knowledge bases can augment model IQ. The economic value these innovations unlock has barely begun to be realized, and most industries haven’t felt the productivity gains.</p>
+<p> </p>
+<p>The next wave of progress will stem from uniting several key innovations that allow for self-organizing data, detailed responses to queries, and quickly altering how machine learning systems operate. While the leap forward will come from the confluence of several synergistic technologies, I was excited by the promises offered by a recent paper titled <a href="https://socraticmodels.github.io/">“Socratic Models”</a> demonstrating how real tasks could be accomplished using off-the-shelf freely available models. To see how easily such an ensemble could be deployed, I recreated pieces of their research.</p>
+<div id="multimodal-communication" class="section level2">
+<h2>Multimodal Communication</h2>
+<p>Models that unite language and image modalities have received significant attention recently, most notably CLIP and DALL-E. There are countless other multimodal models uniting speech, sound, video, and structured data, and many available with open-sourced implementations and weights. Translating between modalities is a superpower itself, but real magic can be realized by having models reason in concert with full context. When language is ambiguous, video and audio models can ground model interpretation and response using similar logic to a human thought process.</p>
+<p> </p>
+<p>Given the quantity of research published in this field over the last few months, it’s clear that many agree with this position. <a href="https://blog.google/products/search/multisearch/?_ga=2.67288273.1779672922.1649096098-707072953.1637333628">Google Multisearch</a> allows users to find content using images and text in concert, for example, asking its search engine to find socks with the same pattern as a pictured shirt. In <a href="https://arxiv.org/pdf/2203.11096.pdf">CLIP meets GamePhysics</a> researchers used CLIP embeddings to find scenes in video games with reported glitches from users on Reddit. Many specific applications of this technology have been prototyped, but Socratic Models is the first to offer a more general vision.</p>
+</div>
+<div id="socratic-models" class="section level2">
+<h2>Socratic Models</h2>
+<p>Wikipedia defines the <a href="https://en.wikipedia.org/wiki/Socratic_method">Socratic method</a> as</p>
+<p> </p>
+<blockquote>
+<p>a form of cooperative argumentative dialogue between individuals, based on asking and answering questions to stimulate critical thinking and to draw out ideas and underlying presuppositions.</p>
+</blockquote>
+<p> </p>
+<p>We now have models that take different modalities of information as input (text, images, sound, spoken language) and can return text representations of their content. Through the common interface of natural language, we can have them reason, discuss, and supervise to produce higher level AI applications. This is the core idea behind Socratic Models.</p>
+<p> </p>
+<p>While the paper discusses many ways to deploy this technology, the core methods are displayed through the interpretation of first-person (egocentric) video recording someone’s daily routine. Various pre-trained models are tasked with working together to answer questions, return search results, and summarize the day without any fine-tuning on in-domain data. A video-language model (e.g. CLIP) is asked to list objects and places seen in video stills. A large-language model (e.g. GPT-3) is prompted to provide activities that could be performed in those places and with those objects. Audio-language models (e.g. Wav2CLIP, Wav2Vec2) further supervise the likelihood that those “logs” produced are correct. This process can proceed iteratively, producing a high quality of log of what occurred in the video for summarization or question answering later.</p>
+<p> </p>
+<p>I knew that despite the apparent simplicity of this model ensemble, it can still be a challenge to prompt the model for a specific and grounded response. To explore this space, I created a smaller version of Socratic Models combining image and language modalities.</p>
+</div>
+<div id="streamlit-app" class="section level2">
+<h2>Streamlit App</h2>
+<div class="figure">
+<img src="/img/socratic_search.png" alt="" />
+<p class="caption">Socratic models for YouTube videos</p>
+</div>
+<p> </p>
+<p>The app all starts with a chosen video. As I default, I chose an egocentric video similar to the example in the paper, following an individual as they go through their work day. However, I tried other related videos like first person video games and unrelated like movie scenes with similar levels of success.</p>
+<p> </p>
+<p>Frames from the video were sampled at a constant rate using OpenCV - obviously how fine-grained those samples are will affect how well the models perform. Each frame was then embedded using the CLIP image encoder and stored in a <a href="https://github.com/facebookresearch/faiss/wiki">Faiss</a> index for nearest neighbor retrieval. This enabled the simplest of the Socratic Models applications - video search.</p>
+<p> </p>
+<div class="figure">
+<img src="/img/socratic_video_search1.png" alt="" />
+<p class="caption">Video search for “working at my computer”</p>
+</div>
+<p> </p>
+<p>I found this application to work pretty flawlessly. The query entered into the text box is encoded using the CLIP text encoder, and a nearest neighbor search is performed in the Faiss index to find the closest image embeddings. While my queries were often simple, it was able to rank frames correctly based on semantic changes to the text, even while the same keywords were used. The only real failure mode was when I search for something not present in the sampled frames - of course, the application still returned the closest embeddings. While embedding distance could be used to threshold what was returned, model-based methods for determining relevance would likely be more robust to different types of video.</p>
+<p> </p>
+<div class="figure">
+<img src="/img/socratic_video_search2.png" alt="" />
+<p class="caption">Video search for “eating lunch with my coworkers”</p>
+</div>
+<p> </p>
+<p>Next, I looked into producing an event log, with one line listing the places, objects, and activities seen in each frame in the video. The paper actually filters model output for places and objects by restricting possible answers to any of the places in the Places365 dataset and objects in the OpenImages dataset. This is a strategy I often use for controlling model output, but I followed the paper in not applying this restriction to the activities list, allowing for more expressivity from the model.</p>
+<p> </p>
+<p>For each image, CLIP was used to rank the place and object categories and the top 3 for each are taken for the log. The LLM (I used <a href="https://huggingface.co/bigscience/T0pp">T0pp</a> after trying a few others like GPT-J) was then prompted to list the activities given those CLIP supervised descriptions. For example, I performed 1-shot learning and prompted T0pp with</p>
+<p> </p>
+<blockquote>
+<p>Places: kitchen. Objects: coffee maker. I might be doing these 3 activities: eating, making breakfast, grinding coffee. Places: office cubicles, computer room, office. Objects: Desk, Office building, Computer monitor. I might be doing these 3 activities:</p>
+</blockquote>
+<p> </p>
+<p>The results were definitely mixed. While there are clear examples of the log working as expected, T0pp may require more prompt engineering and definitely has less creativity than GPT-3 (by design).</p>
+<p> </p>
+<div class="figure">
+<img src="/img/socratic_event_log.png" alt="" />
+<p class="caption">Event log for egocentric video</p>
+</div>
+<p> </p>
+<p>Finally, with the event log in hand, I explored creating event summaries. The paper makes it clear this is a challenging task, and it is easy to see why. We cannot feed the whole event log for the language model to reason over, so we must select a coherent segment to include in the prompt. But segmenting events from one another is no trivial task. The paper offers two solutions: uniform sampling or on the fly video search given specific events of interest. Given my limited compute budget, I tried the former with predictably poor results.</p>
+<p> </p>
+<div class="figure">
+<img src="/img/socratic_event_summaries.png" alt="" />
+<p class="caption">Event summaries</p>
+</div>
+<p> </p>
+<p>Errors tend to compound, so issues with the log generation only added more noise to the summaries. Nevertheless, I was impressed with what could be done with off-the-shelf models. With more time, finer sampling of video frames, and better prompt engineering, I feel confident that I could reduce the noise and produce a tighter result.</p>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<p>For me, the exciting thing about this paper is what is left to be explored. There is a whole universe of NLP companies focused on fine-tuning, and while GPT-3 is certainly impressive, it isn’t yet a replacement for producing reliable, consistent results for customers. Here is a truly viable alternative - flexible, controllable, recursively self-supervised. While costs in the short term might pose a barrier, many of these models are more lightweight than they appear and most can be accessed via API for a reasonable marginal cost. I’ll certainly continue to find ways to make this ensemble and embedding based approach useful for producing tangible value.</p>
+</div>
+
+		</section>
+
+		<br>
+		<div class="meta">Posted on Apr 28, 2022</div>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/%20/tags/nlp">NLP</a></li>
+					
+					<li><a href="/%20/tags/pytorch">PyTorch</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr>
+
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

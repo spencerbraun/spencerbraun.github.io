@@ -19,6 +19,16 @@ I recently presented a paper at the NAACL 2022 conference for work conducted wit
     </item>
     
     <item>
+      <title>Socratic Models - AI Ensembles</title>
+      <link>https://spencerbraun.github.io/posts/socratic-models-applications/</link>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://spencerbraun.github.io/posts/socratic-models-applications/</guid>
+      <description>The period of 2018-2020 was a critical time for progress in natural language processing. On the back of Transformers, a wave of value was created with products like text completion, sentiment analysis, entity recognition, and writing improvement tools. The process for creating these technologies would be familiar to data scientists across domains: collect and label data, train and fine-tune models, test different architectures, and optimize hyperparameters.
+For those close to NLP research and development, the last year has presented a clear break from this incremental progress.</description>
+    </item>
+    
+    <item>
       <title>Demand Forecasting with Bayesian Methods</title>
       <link>https://spencerbraun.github.io/posts/demand-forecasting-with-bayesian-methods/</link>
       <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
